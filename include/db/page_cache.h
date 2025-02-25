@@ -1,41 +1,35 @@
 // @author Graham Hemingway @copyright 2025 - All rights reserved
-
 #ifndef PAGE_CACHE_H
 #define PAGE_CACHE_H
 
-#include "db/record.h"
 #include <cstdint>
 #include <fstream>
 
 class Header;
-class BTreePage;
 class Page;
 
+/**
+ *
+ */
 class PageCache {
 public:
-  PageCache(Header *header, std::fstream &fileStream);
-  ~PageCache() = default;
+    PageCache(Header* header, std::fstream& fileStream);
+    PageCache(const PageCache&) = delete;
+    ~PageCache() = default;
 
-  Page *fetchPage(uint32_t id);
+    auto operator=(const PageCache&) -> PageCache& = delete;
 
-private:
-  Header *header;
-  std::fstream &fileStream;
-  Page *pages[1024];
-};
-
-class Scanner {
-public:
-  explicit Scanner(PageCache *cache, uint32_t pageId);
-  ~Scanner() = default;
-
-  bool hasNext() const;
-  Record nextRecord();
+    /**
+     *
+     * @param id
+     * @return
+     */
+    auto fetchPage(uint32_t id) -> Page*;
 
 private:
-  PageCache *cache;
-  BTreePage *page;
-  uint32_t cell;
+    Header* header;
+    std::fstream& fileStream;
+    std::array<Page*, 1024> pages;
 };
 
 #endif // PAGE_CACHE_H

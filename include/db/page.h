@@ -6,13 +6,13 @@
 
 class Page {
 public:
-  explicit Page(uint32_t type);
-  virtual ~Page() = default;
+    explicit Page(uint32_t type);
+    virtual ~Page() = default;
 
-  virtual void print(std::ostream &) const = 0;
+    virtual void print(std::ostream&) const = 0;
 
 protected:
-  uint32_t pageType;
+    uint32_t pageType;
 
 private:
 };

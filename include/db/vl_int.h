@@ -6,14 +6,14 @@
 #include <cstdint>
 #include <utility>
 
-class VarInt {
+class VLInt {
 public:
-  static std::pair<int64_t, uint8_t> parse(const char *buffer);
+    static std::pair<int64_t, uint8_t> parse(const unsigned char* buffer);
 
-  explicit VarInt(int64_t value = 0);
+    explicit VLInt(int64_t value = 0);
 
 private:
-  int64_t value;
+    int64_t value;
 };
 
 #endif // VL_INT_H

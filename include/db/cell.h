@@ -5,16 +5,19 @@
 #include "./btree.h"
 #include "./record.h"
 
+/**
+ *
+ */
 class Cell {
 public:
-  Cell(const char *, BtreePageType);
+    Cell(const unsigned char*, BtreePageType);
 
-  Record &toRecord();
+    auto toRecord() -> Record&;
 
 private:
-  int64_t id;
-  // const char *data;
-  Record record;
+    int64_t id;
+    // const char *data;
+    Record record;
 };
 
 #endif // CELL_H

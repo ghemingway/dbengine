@@ -27,3 +27,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 add_executable(vandbe src/main.cpp src/cli.cpp)
 add_dependencies(vandbe DBEngine)
 target_link_libraries(vandbe PRIVATE DBEngine)
+
+# Make the project root directory the working directory when we run
+# Define the source files and dependencies for the executable
+set(SOURCE_FILES
+    tests/main.cpp
+    tests/db/vl_int.cpp
+)
+add_executable(automated_tests ${SOURCE_FILES})
+add_dependencies(automated_tests gtest DBEngine)
+target_link_libraries(automated_tests PRIVATE gtest ${CMAKE_THREAD_LIBS_INIT} DBEngine)

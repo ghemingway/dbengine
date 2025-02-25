@@ -6,6 +6,7 @@ target_sources(DBEngine PRIVATE
     ./page.cpp
     ./page_cache.cpp
     ./record.cpp
+    ./scanner.cpp
     ./vandb.cpp
     ./vl_int.cpp
 )

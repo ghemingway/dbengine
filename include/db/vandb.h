@@ -2,24 +2,34 @@
 #ifndef DB_H
 #define DB_H
 
+#include "db/engine.h"
 #include <filesystem>
 #include <fstream>
 
 class Header;
 class PageCache;
 
+/**
+ *
+ */
 class VanDB {
 public:
-  explicit VanDB(const std::string &path = "");
-  ~VanDB();
+    explicit VanDB(const std::string& path = "");
+    VanDB(const VanDB&) = delete;
+    ~VanDB();
 
-  void displayTables(std::ostream &) const;
+    VanDB& operator=(const VanDB&) = delete;
+
+    /**
+     *
+     */
+    void displayTables(std::ostream&) const;
 
 private:
-  std::filesystem::path filePath;
-  std::fstream fileStream;
-  Header *header;
-  PageCache *pageCache;
+    std::filesystem::path filePath;
+    std::fstream fileStream;
+    Header* header;
+    PageCache* pageCache;
 };
 
 #endif // DB_H

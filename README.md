@@ -1,5 +1,5 @@
 # CS 3251: Intermediate Software Design
-## Programming Assignment 3 - A More Complex Data Type
+## Programming Assignment 2 - Read DB Files
 
 ### Assignment Objectives
 - Start to build up a more complex program
